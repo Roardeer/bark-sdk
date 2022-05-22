@@ -28,11 +28,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-<<<<<<< HEAD
-      - run: npm run install
-=======
       - run: npm install
->>>>>>> 3a9ec20 (init)
       - run: npm run build
       - run: npm publish
         env:

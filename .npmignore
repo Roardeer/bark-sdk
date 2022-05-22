@@ -7,3 +7,5 @@ yarn-error.log
 jest.config.ts
 *.tgz
 /__test__
+.github
+LICENSE

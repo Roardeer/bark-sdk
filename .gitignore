@@ -7,3 +7,5 @@ yarn-error.log
 /coverage
 /dist
 *.tgz
+.editorconfig
+.eslintrc.yml
