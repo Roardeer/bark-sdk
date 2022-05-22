@@ -2,7 +2,7 @@
 
 ## install
 ``` bash
-
+npm i @kyuuseiryuu/bark-sdk
 ```
 ## usage
 

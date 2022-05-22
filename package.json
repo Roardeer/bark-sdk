@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "author": "kyuuseiryuu <kyuuseiryuu@gmail.com>",
   "license": "MIT",
-  "publishConfig": {
-    "@kyuuseiryuu:registry": "https://npm.pkg.github.com"
-  },
   "homepage": "https://github.com/kyuuseiryuu/bark-sdk",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
