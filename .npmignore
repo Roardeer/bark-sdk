@@ -1,0 +1,9 @@
+/.idea
+babel.config.js
+/coverage
+/src
+tsconfig.json
+yarn-error.log
+jest.config.ts
+*.tgz
+/__test__
