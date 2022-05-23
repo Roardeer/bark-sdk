@@ -1,4 +1,5 @@
 # bark-sdk
+![release workflow](https://github.com/kyuuseiryuu/bark-sdk/actions/workflows/release-package.yml/badge.svg)
 
 ## install
 ``` bash
