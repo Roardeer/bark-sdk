@@ -1,13 +1,24 @@
-import { BarkConfig, BarkSound, BarkLevel, BarkConfigKey } from '../index';
+import { BarkConfig, BarkSound, BarkLevel } from '../index';
 export class BarkNotification {
   protected config: Partial<BarkConfig> = {};
-  constructor(private content: string, private title?: string) {}
-  setTitle(title: string) {
-    this.title = title;
+  constructor(content?: string, title?: string) {
+    this.config.body = content;
+    this.config.title = title;
+  }
+  setTitle(title?: string) {
+    this.config.title = title;
     return this;
   }
-  setContent(content: string) {
-    this.content = content;
+  setContent(content?: string) {
+    this.config.body = content;
+    return this;
+  }
+  setCategory(category?: string) {
+    this.config.category = category || this.config.category;
+    return this;
+  }
+  setBadge(num?: number) {
+    this.config.badge = num;
     return this;
   }
   setSound(sound?: BarkSound) {
@@ -30,27 +41,25 @@ export class BarkNotification {
     this.config.url = url;
     return this;
   }
-  autoCopy(copy?: string) {
-    this.config.autoCopy = copy ? 1 : 0;
-    this.config.copy = copy;
+  autoCopy(autoCopy?: boolean) {
+    this.config.automaticallyCopy = autoCopy === false ? void(0) : '1';
+    return this;
+  }
+  setCopyText(text: string) {
+    this.config.copy = text;
     return this;
   }
   archive(archive?: boolean) {
-    this.config.isArchive = archive === false ? 0 : 1;
+    // false 一定是不保存，调用方法但不穿参数则认为需要保存，不调用此方法将有客户端决定是否保存。
+    this.config.isArchive = archive === false ? '0' : '1';
     return this;
   }
+  buildBarkMessageConfig() {
+    return { ...this.config };
+  }
   clone() {
-    const newInstance = new BarkNotification(this.content, this.title);
+    const newInstance = new BarkNotification();
     newInstance.config = this.config;
     return newInstance;
-  }
-  buildPathAndParams(): string {
-    const urlSchema = new URLSearchParams();
-    Object.keys(this.config).forEach(k => {
-      const item = this.config[k as BarkConfigKey];
-      if (item !== undefined) urlSchema.append(k, item.toString());
-    });
-    const str = urlSchema.toString();
-    return [[this.title, this.content].filter(Boolean).join('/'), str].join('?');
   }
 }
