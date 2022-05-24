@@ -40,15 +40,17 @@ export type BarkSound = typeof sounds[number];
 export type BarkLevel = typeof level[number];
 
 export interface BarkConfig {
-  sound: BarkSound;
-  isArchive?: 1 | 0;
-  icon: string;
-  group: string;
-  level: BarkLevel;
-  url: string;
-  copy: string;
-  badge: number;
-  autoCopy?: 1 | 0;
+  body:	string;
+  category:	string;
+  device_key:	string;
+  title?:string;
+  level?:	string;
+  badge?:	number;
+  automaticallyCopy?:	string;
+  copy?: string;
+  sound?: string;
+  icon?: string;
+  group?: string;
+  isArchive?: string;
+  url?: string;
 }
-
-export type BarkConfigKey = keyof BarkConfig;
