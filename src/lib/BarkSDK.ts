@@ -12,7 +12,6 @@ export class BarkSDK {
       ...notification.buildBarkMessageConfig(),
       device_key: user.getKey(),
     }
-    console.log('Bark', url, data);
     return await this.axiosInstance.post(url, data).then((res) => {
       return true;
     }).catch(() => {
