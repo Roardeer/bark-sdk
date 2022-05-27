@@ -49,4 +49,8 @@ describe('test BarkSDK', () => {
     expect(u1.getServer()).toBeDefined();
     expect(u1.getKey()).toBeDefined();
   });
+  test('test merge config', () => {
+    notification.merge({ title: 'merge' });
+    expect(notification.buildBarkMessageConfig().title).toBe('merge');
+  });
 });

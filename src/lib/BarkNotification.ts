@@ -62,4 +62,8 @@ export class BarkNotification {
     newInstance.config = this.config;
     return newInstance;
   }
+  merge(config: Partial<BarkConfig>) {
+    this.config = { ...this.config, ...config };
+    return this;
+  }
 }
