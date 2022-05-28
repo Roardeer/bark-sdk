@@ -6,6 +6,10 @@ import { BarkConfig } from "../types";
 export class BarkSDK {
   private axiosInstance = axios.create({ validateStatus: () => true });
   constructor(private barkServer: string) {}
+  resetServer(barkServer: string) {
+    this.barkServer = barkServer;
+    return this;
+  }
   private async notifySingle(user: BarkUser, notification: BarkNotification) {
     const url = `${user.getServer() || this.barkServer}/push`;
     const data: Partial<BarkConfig> = {
