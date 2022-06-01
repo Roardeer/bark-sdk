@@ -32,7 +32,7 @@ export class BarkSDK {
     const keys = Object.keys(config) as (keyof BarkConfig)[] ;
     const filtered: {[k: string]: any} = {};
     keys.forEach((key) => {
-      if (Object.hasOwn(demo, key) && config[key]) {
+      if (demo.hasOwnProperty(key) && config[key]) {
         filtered[key] = config[key];
       }
     });

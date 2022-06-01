@@ -31,7 +31,6 @@ describe('test BarkSDK', () => {
   test('test BarkSDK notify', async () => {
     const sdk = new BarkSDK('https://YOUR_BARK_SERVER');
     const user = new BarkUser(BARK_URL);
-    console.log(notification.buildBarkMessageConfig());
     notification.archive(false).setTitle().setContent().setJumpURL('https://baidu.com');
     expect(notification.buildBarkMessageConfig().isArchive).toBe('0');
     const success = await sdk.notify(user, notification);
