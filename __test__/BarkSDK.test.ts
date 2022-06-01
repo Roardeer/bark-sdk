@@ -52,4 +52,11 @@ describe('test BarkSDK', () => {
     notification.merge({ title: 'merge' });
     expect(notification.buildBarkMessageConfig().title).toBe('merge');
   });
+  test('test switchTo', () => {
+    const u1 = new BarkUser('key1');
+    const u2 = new BarkUser('https://test-domain.local/test-key');
+    expect(u1.switchTo('key2').getKey()).toEqual('key2');
+    expect(u1.switchTo(u2).getServer()).toEqual('https://test-domain.local');
+    expect(u1.getKey()).toEqual('test-key');
+  });
 });
