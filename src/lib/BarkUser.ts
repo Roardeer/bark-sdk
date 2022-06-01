@@ -1,7 +1,10 @@
 export class BarkUser {
-  private readonly key: string = '';
-  private readonly server: string = '';
+  private key: string = '';
+  private server: string = '';
   constructor(keyOrURL: string) {
+    this.makeUserFormKeyOrUrl(keyOrURL);
+  }
+  private makeUserFormKeyOrUrl(keyOrURL: string) {
     if (!BarkUser.isURL(keyOrURL)) {
       this.key = keyOrURL;
       return;
@@ -17,6 +20,15 @@ export class BarkUser {
     } catch (e) {
       return false;
     }
+  }
+  switchTo(user: string | BarkUser): BarkUser {
+    if (typeof user === "string") {
+      this.makeUserFormKeyOrUrl(user);
+      return this;
+    }
+    this.key = user.getKey();
+    this.server = user.getServer();
+    return this;
   }
   getServer() {
     return this.server;
