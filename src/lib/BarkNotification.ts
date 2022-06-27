@@ -1,4 +1,4 @@
-import { BarkConfig, BarkSound, BarkLevel } from '../index';
+import { BarkConfig, BarkSound, BarkLevel, BarkConfigKey } from '../index';
 export class BarkNotification {
   protected config: Partial<BarkConfig> = {};
   constructor(content?: string, title?: string) {
@@ -55,15 +55,23 @@ export class BarkNotification {
     return this;
   }
   buildBarkMessageConfig() {
-    return { ...this.config };
+    const cfg = { ...this.config };
+    (Object.keys(cfg) as BarkConfigKey[]).forEach(k => {
+      if (!cfg[k]) delete cfg[k];
+    });
+    return { ...cfg };
   }
   clone() {
     const newInstance = new BarkNotification();
-    newInstance.config = this.config;
+    newInstance.config = this.buildBarkMessageConfig();
     return newInstance;
   }
   merge(config: Partial<BarkConfig>) {
-    this.config = { ...this.config, ...config };
+    const cfg = { ...config };
+    (Object.keys(cfg) as BarkConfigKey[]).forEach(k => {
+      if (!cfg) delete cfg[k];
+    });
+    this.config = { ...this.buildBarkMessageConfig(), ...cfg };
     return this;
   }
 }

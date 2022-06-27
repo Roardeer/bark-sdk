@@ -37,6 +37,47 @@ const level = ['active', 'timeSensitive', 'passive'] as const;
 
 export type BarkSound = typeof sounds[number];
 
+export enum BarkLevelEnum {
+  ACTIVE = 'active',
+  TIME_SENSITIVE = 'timeSensitive',
+  PASSIVE = 'passive',
+}
+
+export enum BarkSoundEnum {
+  SILENCE = 'silence',
+  ALARM = 'alarm',
+  ANTICIPATE = 'anticipate',
+  BELL = 'bell',
+  BIRDSONG = 'birdsong',
+  BLOOM = 'bloom',
+  CALYPSO = 'calypso',
+  CHIME = 'chime',
+  CH_OO = 'choo',
+  DESCENT = 'descent',
+  ELECTRONIC = 'electronic',
+  FANFARE = 'fanfare',
+  GLASS = 'glass',
+  GOTO_SLEEP = 'gotosleep',
+  HEALTH_NOTIFICATION = 'healthnotification',
+  HORN = 'horn',
+  LADDER = 'ladder',
+  MAIL_SENT = 'mailsent',
+  MINUET = 'minuet',
+  MULTIWAY_INVITATION = 'multiwayinvitation',
+  NEW_MAIL = 'newmail',
+  NEWSFLASH = 'newsflash',
+  NOIR = 'noir',
+  PAYMENT_SUCCESS = 'paymentsuccess',
+  SHAKE = 'shake',
+  SHERWOOD_FOREST = 'sherwoodforest',
+  SPELL = 'spell',
+  SUSPENSE = 'suspense',
+  TELEGRAPH = 'TELEGRAPH',
+  TIPTOES = 'tiptoes',
+  TYPEWRITERS = 'typewriters',
+  UPDATE = 'update',
+}
+
 export type BarkLevel = typeof level[number];
 
 export interface BarkConfig {
@@ -54,3 +95,5 @@ export interface BarkConfig {
   isArchive?: string;
   url?: string;
 }
+
+export type BarkConfigKey = keyof BarkConfig;
